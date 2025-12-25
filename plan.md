@@ -2,7 +2,10 @@
 
 ## Overview
 A full-stack Hebrew recipe website with email-based authentication, recipe management, and user features.
-
+### Project Context & Core Task
+**Current State:** A single-admin recipe website designed for personal/private use.
+**Goal:** Transform the platform into a multi-user, community-driven application.
+**Key Shift:** The core logic must change from a "Global/Admin-only" view to a "Group-based" access model. Users should see and interact with recipes based on the specific groups they belong to, moving away from a single-user controlled environment.
 ---
 
 ## Tech Stack
