@@ -1,0 +1,256 @@
+@import './variables';
+@import './buttons';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  direction: ltr;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-color: $background;
+  color: $text-primary;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+// App layout for fixed header
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 82px; // Account for fixed header height
+  animation: fadeIn 0.3s ease-out;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: $font-md;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mt-1 { margin-top: $spacing-sm; }
+.mt-2 { margin-top: $spacing-md; }
+.mt-3 { margin-top: $spacing-lg; }
+.mb-1 { margin-bottom: $spacing-sm; }
+.mb-2 { margin-bottom: $spacing-md; }
+.mb-3 { margin-bottom: $spacing-lg; }
+
+
+// Form styles
+.form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: 500;
+    color: $text-secondary;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    background-color: white;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+}
+
+.error-message {
+  color: $error;
+  font-size: $font-sm;
+  margin-top: $spacing-xs;
+}
+
+// Card styles
+.card {
+  background-color: white;
+  border-radius: $radius-lg;
+  box-shadow: 0 2px 8px $shadow;
+  padding: $spacing-lg;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px $shadow;
+  }
+}
+
+// Loading spinner
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-xl;
+
+  &::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 4px solid $cream-dark;
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Transition animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Animation utility classes
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.4s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+// Stagger animation for lists/grids
+@for $i from 1 through 12 {
+  .stagger-#{$i} {
+    animation-delay: #{$i * 0.05}s;
+    animation-fill-mode: both;
+  }
+}
+
+// Star rating
+.stars {
+  display: inline-flex;
+  gap: 2px;
+
+  .star {
+    color: $cream-dark;
+    font-size: $font-lg;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &.filled {
+      color: $warning;
+    }
+
+    &:hover {
+      color: $warning;
+    }
+  }
+}
